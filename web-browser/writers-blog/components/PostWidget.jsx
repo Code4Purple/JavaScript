@@ -5,18 +5,19 @@ import Link from 'next/link'
 import { getRecentPosts, getSimilarPosts } from '../services'
 
 
-function PostWidget({ categories, slug }) {
-    const [relatedPosts, setRealtedPosts] = useState([]);
+const PostWidget = ({ categories, slug }) => {
+    const [relatedPosts, setRelatedPosts] = useState([]);
     useEffect(() => {
         if (slug) {
             getSimilarPosts(categories, slug)
-                .then((result) => setRealtedPosts(result))
+                .then((result) => setRelatedPosts(result))
         } else {
             getRecentPosts()
-                .then((result) => setRealtedPosts(result))
+                .then((result) => setRelatedPosts(result))
         }
     }, [slug])
-    console.log(relatedPosts);
+    //console.log(relatedPosts);
+    //console.log(relatedPosts);
     return (
         <div className='bg-white shadow-lg rounded-lg p-8 mb-8'>
             <h3 className="text-xl mb-8 font-semibold border-b pb-4">
@@ -38,6 +39,7 @@ function PostWidget({ categories, slug }) {
                             {moment(post.createdAt).format('MMM DD, YYYY')}
                         </p>
                         <Link href={`/post/${post.slug}`} key={post.title} className='text-md'>
+
                         </Link>
                     </div>
                 </div>
