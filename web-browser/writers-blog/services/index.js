@@ -1,6 +1,6 @@
 import { request, gql } from "graphql-request";
 
-const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
+const graphqlAPI = process.env.NEXT_PUBLIC_WRITERSBLOG_ENDPOINT;
 
 export const getPosts = async () => {
   const query = gql`
@@ -68,7 +68,7 @@ export const getRecentPosts = async () => {
     query GetPostDetails() {
       posts(
         orderby: createdAt_ASC
-        last 3
+        last: 3
       ) {
         title
         featuredImage {
@@ -80,6 +80,6 @@ export const getRecentPosts = async () => {
    }
   `;
   const result = await request(graphqlAPI, query);
-  //return result = result.posts;
-  return result = result.RecentPosts;
+  return result = result.posts;
+  //return result = result.RecentPosts;
 };
