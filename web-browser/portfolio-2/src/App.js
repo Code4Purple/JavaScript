@@ -1,13 +1,9 @@
-import logo from './logo.svg';
+import Home from './Componnets/Home';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Test
-      </header>
-    </div>
+    <Home />
   );
 }
 
